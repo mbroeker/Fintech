@@ -1,0 +1,37 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "C903621FC77C3523F594A70FD41FC2FF94D7CF5D",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "C903621FC77C3523F594A70FD41FC2FF94D7CF5D" : 0,
+    "6AB962E0C8E7D468799370AE2E084C5E57414C5D" : 0,
+    "B38878D4D045D1BBD67D0E6E51777612A18FFAB7" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "03EB8843-302F-42F1-A174-91A7FB6CEA88",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "C903621FC77C3523F594A70FD41FC2FF94D7CF5D" : "Fintech\/",
+    "6AB962E0C8E7D468799370AE2E084C5E57414C5D" : "Brokerage\/",
+    "B38878D4D045D1BBD67D0E6E51777612A18FFAB7" : "Calculator\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Fintech",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Fintech.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/mbroeker\/Brokerage.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "6AB962E0C8E7D468799370AE2E084C5E57414C5D"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/mbroeker\/Calculator.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "B38878D4D045D1BBD67D0E6E51777612A18FFAB7"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/mbroeker\/Fintech.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C903621FC77C3523F594A70FD41FC2FF94D7CF5D"
+    }
+  ]
+}

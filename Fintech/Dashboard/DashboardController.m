@@ -24,13 +24,16 @@
 @synthesize dataRows;
 @synthesize exchangeTableView;
 
+/**
+ * Refresh the Table Data
+ */
 - (void)refreshTable {
     dispatch_queue_t queue = dispatch_queue_create("de.4customers.fintech.refreshQueue", nil);
     dispatch_async(queue, ^{
         ticker = [Bittrex ticker:assets forFiatCurrencies:fiatCurrencies];
 
         dispatch_async(dispatch_get_main_queue(), ^{
-            int i=0;
+            int i = 0;
             dataRows = [[NSMutableArray alloc] init];
 
             for (id key in ticker) {
@@ -52,6 +55,9 @@
     });
 }
 
+/**
+ * Main Entry Point for this View
+ */
 - (void)viewDidLoad {
     [super viewDidLoad];
 
@@ -133,7 +139,7 @@
     if (row == -1) { return nil; }
     if (row >= dataRows.count) { return nil; }
 
-    TickerData *data = (TickerData *)dataRows[row];
+    TickerData *data = (TickerData *) dataRows[row];
 
     if (data == nil) { return nil; }
 
@@ -158,23 +164,29 @@
     }
 
     if ([tableColumn.title isEqualToString:@"baseVolume"]) {
-        if (data.basevolume.doubleValue == 0) return @"   ---   ";
+        if (data.basevolume.doubleValue == 0) { return @"   ---   "; }
         return [NSString stringWithFormat:@"%.2f", [data.basevolume doubleValue]];
     }
 
     if ([tableColumn.title isEqualToString:@"quoteVolume"]) {
-        if (data.quotevolume.doubleValue == 0) return @"   ---   ";
+        if (data.quotevolume.doubleValue == 0) { return @"   ---   "; }
         return [NSString stringWithFormat:@"%.2f", [data.quotevolume doubleValue]];
     }
 
     if ([tableColumn.title isEqualToString:@"investmentRate"]) {
-        if (data.investmentrate.doubleValue == 0) return @"   ---   ";
+        if (data.investmentrate.doubleValue == 0) { return @"   ---   "; }
         return [NSString stringWithFormat:@"%.2f", 100.0 * [data.investmentrate doubleValue]];
     }
 
     return nil;
 }
 
+/**
+ * Makes the table sortable
+ *
+ * @param aTableView NSTableView*
+ * @param oldDescriptors NSArray*
+ */
 - (void)tableView:(NSTableView *)aTableView sortDescriptorsDidChange:(NSArray *)oldDescriptors {
     dataRows = [[dataRows sortedArrayUsingDescriptors:aTableView.sortDescriptors] mutableCopy];
 
@@ -184,6 +196,7 @@
 /**
  * Refresh the list
  *
+ * @param sender id
  */
 - (IBAction)refreshButtonAction:(id)sender {
     [self refreshTable];

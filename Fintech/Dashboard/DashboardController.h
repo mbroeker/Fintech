@@ -14,13 +14,21 @@
  * @author      Markus Bröker<broeker.markus@googlemail.com>
  * @copyright   Copyright (C) 2017 4customers UG
  */
-@interface DashboardController : NSViewController<NSTableViewDelegate, NSTableViewDataSource>
+@interface DashboardController : NSViewController <NSTableViewDelegate, NSTableViewDataSource>
 
-@property (strong) IBOutlet NSTableView *exchangeTableView;
+@property(strong) IBOutlet NSTableView *exchangeTableView;
 @property(strong) NSMutableArray *dataRows;
 
-@property (strong) IBOutlet NSButton *refreshButton;
+@property(strong) IBOutlet NSButton *refreshButton;
 
+/**
+ * @param sender id
+ */
 - (IBAction)refreshButtonAction:(id)sender;
+
+/**
+ * Refresh the Table Data
+ */
+- (void)refreshTable;
 
 @end
