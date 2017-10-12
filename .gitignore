@@ -1,0 +1,8 @@
+.hg
+.DS_Store
+.idea/
+Podfile.lock
+Fintech.xcodeproj/xcuserdata
+Fintech.xcodeproj/project.xcworkspace/xcuserdata
+
+docs/

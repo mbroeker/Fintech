@@ -1,0 +1,567 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B2285C781F8EECE100BB95F0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B2285C771F8EECE100BB95F0 /* main.m */; };
+		B2285C7D1F8EECE100BB95F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2285C7C1F8EECE100BB95F0 /* Assets.xcassets */; };
+		B2285C801F8EECE100BB95F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2285C7E1F8EECE100BB95F0 /* Main.storyboard */; };
+		B2285C8B1F8EECE100BB95F0 /* FintechTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B2285C8A1F8EECE100BB95F0 /* FintechTests.m */; };
+		B2285CA91F8EEE5600BB95F0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B2285CA81F8EEE5600BB95F0 /* AppDelegate.m */; };
+		B2285CAD1F8EF2DC00BB95F0 /* DashboardController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2285CAC1F8EF2DC00BB95F0 /* DashboardController.m */; };
+		B2285CBD1F8F367400BB95F0 /* TickerData.m in Sources */ = {isa = PBXBuildFile; fileRef = B2285CBC1F8F367400BB95F0 /* TickerData.m */; };
+		B2285CD21F8F677500BB95F0 /* Brokerage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2285CA41F8EEDB500BB95F0 /* Brokerage.framework */; };
+		B2285CD31F8F677500BB95F0 /* Brokerage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B2285CA41F8EEDB500BB95F0 /* Brokerage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B2285CD71F8F678600BB95F0 /* Calculator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2285C9C1F8EED9A00BB95F0 /* Calculator.framework */; };
+		B2285CD81F8F678600BB95F0 /* Calculator.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B2285C9C1F8EED9A00BB95F0 /* Calculator.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B2285C871F8EECE100BB95F0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B2285C681F8EECE000BB95F0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B2285C6F1F8EECE100BB95F0;
+			remoteInfo = Fintech;
+		};
+		B2285C9B1F8EED9A00BB95F0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B2285C961F8EED9A00BB95F0 /* Calculator.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B2EADEEB1F8EB567002662CE;
+			remoteInfo = Calculator;
+		};
+		B2285C9D1F8EED9A00BB95F0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B2285C961F8EED9A00BB95F0 /* Calculator.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B2EADEF51F8EB568002662CE;
+			remoteInfo = CalculatorTests;
+		};
+		B2285CA31F8EEDB500BB95F0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B2285C9F1F8EEDB400BB95F0 /* Brokerage.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B2213F0F1F8D958E00F2C8CF;
+			remoteInfo = Brokerage;
+		};
+		B2285CD41F8F677500BB95F0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B2285C9F1F8EEDB400BB95F0 /* Brokerage.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = B2213F0E1F8D958E00F2C8CF;
+			remoteInfo = Brokerage;
+		};
+		B2285CD91F8F678600BB95F0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B2285C961F8EED9A00BB95F0 /* Calculator.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = B2EADEEA1F8EB567002662CE;
+			remoteInfo = Calculator;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B2285CD61F8F677500BB95F0 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				B2285CD81F8F678600BB95F0 /* Calculator.framework in Embed Frameworks */,
+				B2285CD31F8F677500BB95F0 /* Brokerage.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		B2285C701F8EECE100BB95F0 /* Fintech.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fintech.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B2285C771F8EECE100BB95F0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		B2285C7C1F8EECE100BB95F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B2285C7F1F8EECE100BB95F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B2285C811F8EECE100BB95F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B2285C861F8EECE100BB95F0 /* FintechTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FintechTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B2285C8A1F8EECE100BB95F0 /* FintechTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FintechTests.m; sourceTree = "<group>"; };
+		B2285C8C1F8EECE100BB95F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B2285C961F8EED9A00BB95F0 /* Calculator.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Calculator.xcodeproj; path = ../Calculator/Calculator.xcodeproj; sourceTree = "<group>"; };
+		B2285C9F1F8EEDB400BB95F0 /* Brokerage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Brokerage.xcodeproj; path = ../Brokerage/Brokerage.xcodeproj; sourceTree = "<group>"; };
+		B2285CA71F8EEE5600BB95F0 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		B2285CA81F8EEE5600BB95F0 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		B2285CAB1F8EF2DC00BB95F0 /* DashboardController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardController.h; sourceTree = "<group>"; };
+		B2285CAC1F8EF2DC00BB95F0 /* DashboardController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardController.m; sourceTree = "<group>"; };
+		B2285CBB1F8F367400BB95F0 /* TickerData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TickerData.h; sourceTree = "<group>"; };
+		B2285CBC1F8F367400BB95F0 /* TickerData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TickerData.m; sourceTree = "<group>"; };
+		B2285CC31F8F638000BB95F0 /* Fintech.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Fintech.entitlements; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B2285C6D1F8EECE100BB95F0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B2285CD71F8F678600BB95F0 /* Calculator.framework in Frameworks */,
+				B2285CD21F8F677500BB95F0 /* Brokerage.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B2285C831F8EECE100BB95F0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B2285C671F8EECE000BB95F0 = {
+			isa = PBXGroup;
+			children = (
+				B2285C9F1F8EEDB400BB95F0 /* Brokerage.xcodeproj */,
+				B2285C961F8EED9A00BB95F0 /* Calculator.xcodeproj */,
+				B2285C721F8EECE100BB95F0 /* Fintech */,
+				B2285C891F8EECE100BB95F0 /* FintechTests */,
+				B2285C711F8EECE100BB95F0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B2285C711F8EECE100BB95F0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B2285C701F8EECE100BB95F0 /* Fintech.app */,
+				B2285C861F8EECE100BB95F0 /* FintechTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B2285C721F8EECE100BB95F0 /* Fintech */ = {
+			isa = PBXGroup;
+			children = (
+				B2285CC31F8F638000BB95F0 /* Fintech.entitlements */,
+				B2285CAA1F8EF2BD00BB95F0 /* Dashboard */,
+				B2285CA61F8EEE5600BB95F0 /* AppDelegate */,
+				B2285C7C1F8EECE100BB95F0 /* Assets.xcassets */,
+				B2285C7E1F8EECE100BB95F0 /* Main.storyboard */,
+				B2285C811F8EECE100BB95F0 /* Info.plist */,
+				B2285C761F8EECE100BB95F0 /* Supporting Files */,
+			);
+			path = Fintech;
+			sourceTree = "<group>";
+		};
+		B2285C761F8EECE100BB95F0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B2285C771F8EECE100BB95F0 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B2285C891F8EECE100BB95F0 /* FintechTests */ = {
+			isa = PBXGroup;
+			children = (
+				B2285C8A1F8EECE100BB95F0 /* FintechTests.m */,
+				B2285C8C1F8EECE100BB95F0 /* Info.plist */,
+			);
+			path = FintechTests;
+			sourceTree = "<group>";
+		};
+		B2285C971F8EED9A00BB95F0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B2285C9C1F8EED9A00BB95F0 /* Calculator.framework */,
+				B2285C9E1F8EED9A00BB95F0 /* CalculatorTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B2285CA01F8EEDB400BB95F0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B2285CA41F8EEDB500BB95F0 /* Brokerage.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B2285CA61F8EEE5600BB95F0 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				B2285CA71F8EEE5600BB95F0 /* AppDelegate.h */,
+				B2285CA81F8EEE5600BB95F0 /* AppDelegate.m */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		B2285CAA1F8EF2BD00BB95F0 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				B2285CAB1F8EF2DC00BB95F0 /* DashboardController.h */,
+				B2285CAC1F8EF2DC00BB95F0 /* DashboardController.m */,
+				B2285CBB1F8F367400BB95F0 /* TickerData.h */,
+				B2285CBC1F8F367400BB95F0 /* TickerData.m */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B2285C6F1F8EECE100BB95F0 /* Fintech */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B2285C8F1F8EECE100BB95F0 /* Build configuration list for PBXNativeTarget "Fintech" */;
+			buildPhases = (
+				B2285C6C1F8EECE100BB95F0 /* Sources */,
+				B2285C6D1F8EECE100BB95F0 /* Frameworks */,
+				B2285C6E1F8EECE100BB95F0 /* Resources */,
+				B2285CD61F8F677500BB95F0 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B2285CD51F8F677500BB95F0 /* PBXTargetDependency */,
+				B2285CDA1F8F678600BB95F0 /* PBXTargetDependency */,
+			);
+			name = Fintech;
+			productName = Fintech;
+			productReference = B2285C701F8EECE100BB95F0 /* Fintech.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B2285C851F8EECE100BB95F0 /* FintechTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B2285C921F8EECE100BB95F0 /* Build configuration list for PBXNativeTarget "FintechTests" */;
+			buildPhases = (
+				B2285C821F8EECE100BB95F0 /* Sources */,
+				B2285C831F8EECE100BB95F0 /* Frameworks */,
+				B2285C841F8EECE100BB95F0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B2285C881F8EECE100BB95F0 /* PBXTargetDependency */,
+			);
+			name = FintechTests;
+			productName = FintechTests;
+			productReference = B2285C861F8EECE100BB95F0 /* FintechTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B2285C681F8EECE000BB95F0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "Markus Bröker";
+				TargetAttributes = {
+					B2285C6F1F8EECE100BB95F0 = {
+						CreatedOnToolsVersion = 7.2.1;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
+					};
+					B2285C851F8EECE100BB95F0 = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
+				};
+			};
+			buildConfigurationList = B2285C6B1F8EECE000BB95F0 /* Build configuration list for PBXProject "Fintech" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				de,
+			);
+			mainGroup = B2285C671F8EECE000BB95F0;
+			productRefGroup = B2285C711F8EECE100BB95F0 /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = B2285CA01F8EEDB400BB95F0 /* Products */;
+					ProjectRef = B2285C9F1F8EEDB400BB95F0 /* Brokerage.xcodeproj */;
+				},
+				{
+					ProductGroup = B2285C971F8EED9A00BB95F0 /* Products */;
+					ProjectRef = B2285C961F8EED9A00BB95F0 /* Calculator.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				B2285C6F1F8EECE100BB95F0 /* Fintech */,
+				B2285C851F8EECE100BB95F0 /* FintechTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		B2285C9C1F8EED9A00BB95F0 /* Calculator.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Calculator.framework;
+			remoteRef = B2285C9B1F8EED9A00BB95F0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B2285C9E1F8EED9A00BB95F0 /* CalculatorTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = CalculatorTests.xctest;
+			remoteRef = B2285C9D1F8EED9A00BB95F0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B2285CA41F8EEDB500BB95F0 /* Brokerage.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Brokerage.framework;
+			remoteRef = B2285CA31F8EEDB500BB95F0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B2285C6E1F8EECE100BB95F0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B2285C7D1F8EECE100BB95F0 /* Assets.xcassets in Resources */,
+				B2285C801F8EECE100BB95F0 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B2285C841F8EECE100BB95F0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B2285C6C1F8EECE100BB95F0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B2285CA91F8EEE5600BB95F0 /* AppDelegate.m in Sources */,
+				B2285C781F8EECE100BB95F0 /* main.m in Sources */,
+				B2285CAD1F8EF2DC00BB95F0 /* DashboardController.m in Sources */,
+				B2285CBD1F8F367400BB95F0 /* TickerData.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B2285C821F8EECE100BB95F0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B2285C8B1F8EECE100BB95F0 /* FintechTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B2285C881F8EECE100BB95F0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B2285C6F1F8EECE100BB95F0 /* Fintech */;
+			targetProxy = B2285C871F8EECE100BB95F0 /* PBXContainerItemProxy */;
+		};
+		B2285CD51F8F677500BB95F0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Brokerage;
+			targetProxy = B2285CD41F8F677500BB95F0 /* PBXContainerItemProxy */;
+		};
+		B2285CDA1F8F678600BB95F0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Calculator;
+			targetProxy = B2285CD91F8F678600BB95F0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B2285C7E1F8EECE100BB95F0 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B2285C7F1F8EECE100BB95F0 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B2285C8D1F8EECE100BB95F0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		B2285C8E1F8EECE100BB95F0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		B2285C901F8EECE100BB95F0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Fintech/Fintech.entitlements;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				"HEADER_SEARCH_PATHS[arch=*]" = "../**";
+				INFOPLIST_FILE = Fintech/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = de.4customers.Fintech;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+			};
+			name = Debug;
+		};
+		B2285C911F8EECE100BB95F0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Fintech/Fintech.entitlements;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				"HEADER_SEARCH_PATHS[arch=*]" = "../**";
+				INFOPLIST_FILE = Fintech/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = de.4customers.Fintech;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+			};
+			name = Release;
+		};
+		B2285C931F8EECE100BB95F0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = FintechTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = de.4customers.FintechTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		B2285C941F8EECE100BB95F0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = FintechTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = de.4customers.FintechTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B2285C6B1F8EECE000BB95F0 /* Build configuration list for PBXProject "Fintech" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B2285C8D1F8EECE100BB95F0 /* Debug */,
+				B2285C8E1F8EECE100BB95F0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B2285C8F1F8EECE100BB95F0 /* Build configuration list for PBXNativeTarget "Fintech" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B2285C901F8EECE100BB95F0 /* Debug */,
+				B2285C911F8EECE100BB95F0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B2285C921F8EECE100BB95F0 /* Build configuration list for PBXNativeTarget "FintechTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B2285C931F8EECE100BB95F0 /* Debug */,
+				B2285C941F8EECE100BB95F0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B2285C681F8EECE000BB95F0 /* Project object */;
+}
