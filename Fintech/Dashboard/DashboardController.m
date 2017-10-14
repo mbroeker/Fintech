@@ -13,8 +13,8 @@
 #import <Calculator/Calculator.h>
 
 @implementation DashboardController {
+
     // Accounting
-    NSArray *assets;
     NSArray *fiatCurrencies;
     NSMutableDictionary *balance;
 
@@ -34,7 +34,7 @@
 - (void)refreshTable {
     dispatch_queue_t queue = dispatch_queue_create("de.4customers.fintech.refreshQueue", nil);
     dispatch_async(queue, ^{
-        ticker = [exchange ticker:assets forFiatCurrencies:fiatCurrencies];
+        ticker = [exchange ticker:fiatCurrencies];
 
         int i = 0;
         dataRows = [[NSMutableArray alloc] init];
@@ -69,50 +69,6 @@
     exchangeTableView.delegate = self;
 
     fiatCurrencies = @[EUR, USD];
-
-    assets = [@{
-        @"BTCD": @"Bitcoin Dark",
-        @"BTC": @"Bitcoin",
-        @"BTS": @"BitShares",
-        @"DASH": @"Digital Cash",
-        @"DCR": @"Decred",
-        @"DGB": @"DigiBytes",
-        @"DOGE": @"Dogecoin",
-        @"EMC2": @"Einsteinium",
-        @"ETC": @"Ethereum Classic",
-        @"ETH": @"Ethereum",
-        @"GAME": @"GameCredits",
-        @"LSK": @"Lisk",
-        @"LTC": @"Litecoin",
-        @"MAID": @"SafeMaid",
-        @"OMG": @"Omise GO",
-        @"SC": @"Siacoin",
-        @"STEEM": @"Steem",
-        @"STRAT": @"Stratis",
-        @"SYS": @"Syscoin",
-        @"XEM": @"New Economy",
-        @"XMR": @"Monero",
-        @"XRP": @"Ripple",
-        @"ZEC": @"ZCash",
-        @"ADA": @"Cardano",
-        @"ADX": @"AD Token",
-        @"ARK": @"Ark Byte",
-        @"BAT": @"Basic Attention",
-        @"BCC": @"Bitcoin Cash",
-        @"ERC": @"Europe Coin",
-        @"IOP": @"Internet of People",
-        @"KMD": @"Komodo",
-        @"MCO": @"Monaco",
-        @"NEO": @"NEO",
-        @"OK": @"OK",
-        @"PAY": @"Pay Token",
-        @"PTC": @"Pesetacoin",
-        @"QTUM": @"Qtum",
-        @"RDD": @"Redd Coin",
-        @"RISE": @"Rise",
-        @"XLM": @"Lumen",
-        @"XVG": @"The Verge",
-    } allKeys];
 
     broker = [[Broker alloc] init];
     exchange = [broker exchange:EXCHANGE_POLONIEX];
