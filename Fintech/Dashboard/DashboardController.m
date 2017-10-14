@@ -84,6 +84,27 @@
 
 /**
  *
+ * @param sender id
+ */
+- (IBAction)doubleClick:(id)sender {
+    NSInteger row = self.exchangeTableView.selectedRow;
+
+    if (row == -1) { return; }
+
+    TickerData *data = self.dataRows[row];
+
+    NSString *url = nil;
+    if ([exchange class]  == [Bittrex class]) {
+       url = [NSString stringWithFormat:@"https://bittrex.com/Market/Index?MarketName=%@", [data.pair stringByReplacingOccurrencesOfString:@"_" withString:@"-"]];
+    } else {
+        url = [NSString stringWithFormat:@"https://poloniex.com/exchange#%@", data.pair];
+    }
+
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:url]];
+}
+
+/**
+ *
  * @param tableView
  * @return
  */
