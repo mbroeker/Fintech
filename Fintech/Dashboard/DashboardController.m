@@ -19,10 +19,14 @@
     NSMutableDictionary *balance;
 
     NSDictionary *ticker;
+
+    Broker *broker;
+    id exchange;
 }
 
 @synthesize dataRows;
 @synthesize exchangeTableView;
+@synthesize fintechLabel;
 
 /**
  * Refresh the Table Data
@@ -30,26 +34,26 @@
 - (void)refreshTable {
     dispatch_queue_t queue = dispatch_queue_create("de.4customers.fintech.refreshQueue", nil);
     dispatch_async(queue, ^{
-        ticker = [Bittrex ticker:assets forFiatCurrencies:fiatCurrencies];
+        ticker = [exchange ticker:assets forFiatCurrencies:fiatCurrencies];
+
+        int i = 0;
+        dataRows = [[NSMutableArray alloc] init];
+
+        for (id key in ticker) {
+            dataRows[i++] = [[TickerData alloc] initWithData:
+                @[
+                    key,
+                    ticker[key][DEFAULT_LAST],
+                    ticker[key][DEFAULT_LOW24],
+                    ticker[key][DEFAULT_HIGH24],
+                    ticker[key][DEFAULT_PERCENT],
+                    ticker[key][DEFAULT_BASE_VOLUME],
+                    ticker[key][DEFAULT_QUOTE_VOLUME]
+                ]
+            ];
+        }
 
         dispatch_async(dispatch_get_main_queue(), ^{
-            int i = 0;
-            dataRows = [[NSMutableArray alloc] init];
-
-            for (id key in ticker) {
-                dataRows[i++] = [[TickerData alloc] initWithData:
-                    @[
-                        key,
-                        ticker[key][DEFAULT_LAST],
-                        ticker[key][DEFAULT_LOW24],
-                        ticker[key][DEFAULT_HIGH24],
-                        ticker[key][DEFAULT_PERCENT],
-                        ticker[key][DEFAULT_BASE_VOLUME],
-                        ticker[key][DEFAULT_QUOTE_VOLUME]
-                    ]
-                ];
-            }
-
             [self.exchangeTableView reloadData];
         });
     });
@@ -109,6 +113,10 @@
         @"XLM": @"Lumen",
         @"XVG": @"The Verge",
     } allKeys];
+
+    broker = [[Broker alloc] init];
+    exchange = [broker exchange:EXCHANGE_POLONIEX];
+    fintechLabel.stringValue = @"Fintech on Poloniex";
 
     for (NSTableColumn *column in exchangeTableView.tableColumns) {
         NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:column.identifier.lowercaseString ascending:YES selector:@selector(compare:)];
@@ -199,6 +207,26 @@
  * @param sender id
  */
 - (IBAction)refreshButtonAction:(id)sender {
+    [self refreshTable];
+}
+
+/**
+ * Refresh from another Exchange
+ *
+ * @param sender id
+ */
+- (IBAction)exchangeButtonAction:(id)sender {
+    if ([exchange class]  == [Bittrex class]) {
+        fintechLabel.stringValue = @"Fintech on Poloniex";
+        exchange = [broker exchange:EXCHANGE_POLONIEX];
+    } else {
+        fintechLabel.stringValue = @"Fintech on Bittrex";
+        exchange = [broker exchange:EXCHANGE_BITTREX];
+    }
+
+    [dataRows removeAllObjects];
+    [exchangeTableView reloadData];
+
     [self refreshTable];
 }
 @end
