@@ -25,9 +25,11 @@
         self.basevolume = @([data[5] doubleValue]);
         self.quotevolume = @([data[6] doubleValue]);
 
-        self.investmentrate = @([self.last doubleValue] / ([data[5] doubleValue] / [data[6] doubleValue]) - 1.0);
-        if (isnan(self.investmentrate.doubleValue)) { self.investmentrate = @0; };
+        double ivr = [self.last doubleValue] / ([data[5] doubleValue] / [data[6] doubleValue]) - 1.0;
+        self.investmentrate = @(ivr);
 
+        if (isnan(self.investmentrate.doubleValue)) { self.investmentrate = @0; };
+        if (isinf(self.investmentrate.doubleValue)) { self.investmentrate = @0; };
     }
 
     return self;

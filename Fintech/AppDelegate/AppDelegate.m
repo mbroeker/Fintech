@@ -11,7 +11,8 @@
 @implementation AppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-    // Insert code here to initialize your application
+    NSUserNotificationCenter *notificationCenter = [NSUserNotificationCenter defaultUserNotificationCenter];
+    notificationCenter.delegate = self;
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
@@ -19,6 +20,13 @@
 }
 
 - (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender {
+    return YES;
+}
+
+/**
+ * Sinn und Zweck: Mitteilungen sollen angezeigt werden
+ */
+- (BOOL)userNotificationCenter:(NSUserNotificationCenter *)center shouldPresentNotification:(NSUserNotification *)notification {
     return YES;
 }
 

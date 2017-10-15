@@ -9,7 +9,6 @@
 #import "DashboardController.h"
 #import "TickerData.h"
 
-#import <Brokerage/Brokerage.h>
 #import <Calculator/Calculator.h>
 
 #define DEFAULT_BROWSER @"com.google.Chrome"
@@ -22,8 +21,7 @@
 
     NSDictionary *ticker;
 
-    Broker *broker;
-    id exchange;
+    Calculator *calculator;
 }
 
 @synthesize dataRows;
@@ -36,7 +34,7 @@
 - (void)refreshTable {
     dispatch_queue_t queue = dispatch_queue_create("de.4customers.fintech.refreshQueue", nil);
     dispatch_async(queue, ^{
-        ticker = [exchange ticker:fiatCurrencies];
+        ticker = [calculator tickerDictionary];
 
         int i = 0;
         dataRows = [[NSMutableArray alloc] init];
@@ -73,9 +71,9 @@
 
     fiatCurrencies = @[EUR, USD];
 
-    broker = [[Broker alloc] init];
-    exchange = [broker exchange:EXCHANGE_POLONIEX];
-    fintechLabel.stringValue = @"Fintech on Poloniex";
+    calculator = [Calculator instance:fiatCurrencies];
+    NSString *currentExchange = ([[calculator defaultExchange] isEqualToString:EXCHANGE_BITTREX]) ? @"Bittrex" : @"Poloniex";
+    fintechLabel.stringValue = [NSString stringWithFormat:@"Fintech on %@", currentExchange];
 
     for (NSTableColumn *column in exchangeTableView.tableColumns) {
         NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:column.identifier.lowercaseString ascending:YES selector:@selector(compare:)];
@@ -98,9 +96,12 @@
 
     if (data == nil) { return; }
 
+    // Get the default Exchange
+    NSString *defaultExchange = [calculator defaultExchange];
+
     NSString *url = nil;
-    if ([exchange class] == [Bittrex class]) {
-       url = [NSString stringWithFormat:@"https://bittrex.com/Market/Index?MarketName=%@", [data.pair stringByReplacingOccurrencesOfString:@"_" withString:@"-"]];
+    if ([defaultExchange isEqualToString:EXCHANGE_BITTREX]) {
+        url = [NSString stringWithFormat:@"https://bittrex.com/Market/Index?MarketName=%@", [data.pair stringByReplacingOccurrencesOfString:@"_" withString:@"-"]];
     } else {
         url = [NSString stringWithFormat:@"https://poloniex.com/exchange#%@", data.pair];
     }
@@ -122,7 +123,7 @@
             options:NSWorkspaceLaunchDefault additionalEventParamDescriptor:nil
             launchIdentifiers:nil
         ];
-    } @catch (NSException *e){
+    } @catch (NSException *e) {
         [[NSWorkspace sharedWorkspace] openURL:theURL];
     }
 }
@@ -217,12 +218,14 @@
  * @param sender id
  */
 - (IBAction)exchangeButtonAction:(id)sender {
-    if ([exchange class] == [Bittrex class]) {
+    NSString *defaultExchange = [calculator defaultExchange];
+
+    if ([defaultExchange isEqualToString:EXCHANGE_BITTREX]) {
         fintechLabel.stringValue = @"Fintech on Poloniex";
-        exchange = [broker exchange:EXCHANGE_POLONIEX];
+        [calculator exchange:EXCHANGE_POLONIEX withUpdate:YES];
     } else {
         fintechLabel.stringValue = @"Fintech on Bittrex";
-        exchange = [broker exchange:EXCHANGE_BITTREX];
+        [calculator exchange:EXCHANGE_BITTREX withUpdate:YES];
     }
 
     [dataRows removeAllObjects];
@@ -230,4 +233,5 @@
 
     [self refreshTable];
 }
+
 @end
