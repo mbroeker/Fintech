@@ -54,6 +54,7 @@
         }
 
         dispatch_async(dispatch_get_main_queue(), ^{
+            dataRows = [[dataRows sortedArrayUsingDescriptors:exchangeTableView.sortDescriptors] mutableCopy];
             [self.exchangeTableView reloadData];
         });
     });
@@ -93,8 +94,10 @@
 
     TickerData *data = self.dataRows[row];
 
+    if (data == nil) { return; }
+
     NSString *url = nil;
-    if ([exchange class]  == [Bittrex class]) {
+    if ([exchange class] == [Bittrex class]) {
        url = [NSString stringWithFormat:@"https://bittrex.com/Market/Index?MarketName=%@", [data.pair stringByReplacingOccurrencesOfString:@"_" withString:@"-"]];
     } else {
         url = [NSString stringWithFormat:@"https://poloniex.com/exchange#%@", data.pair];
@@ -193,7 +196,7 @@
  * @param sender id
  */
 - (IBAction)exchangeButtonAction:(id)sender {
-    if ([exchange class]  == [Bittrex class]) {
+    if ([exchange class] == [Bittrex class]) {
         fintechLabel.stringValue = @"Fintech on Poloniex";
         exchange = [broker exchange:EXCHANGE_POLONIEX];
     } else {
