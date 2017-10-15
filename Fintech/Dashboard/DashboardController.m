@@ -12,6 +12,8 @@
 #import <Brokerage/Brokerage.h>
 #import <Calculator/Calculator.h>
 
+#define DEFAULT_BROWSER @"com.google.Chrome"
+
 @implementation DashboardController {
 
     // Accounting
@@ -103,7 +105,26 @@
         url = [NSString stringWithFormat:@"https://poloniex.com/exchange#%@", data.pair];
     }
 
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:url]];
+    [self openURL:url];
+}
+
+/**
+ * Try to Open a webpage in DEFAULT_BROWSER and use the system browser as a fallback
+ *
+ * @param url NSString*
+ */
+- (void)openURL:(NSString *)url {
+    NSURL *theURL = [NSURL URLWithString:url];
+
+    @try {
+        [[NSWorkspace sharedWorkspace] openURLs:@[theURL]
+            withAppBundleIdentifier:DEFAULT_BROWSER
+            options:NSWorkspaceLaunchDefault additionalEventParamDescriptor:nil
+            launchIdentifiers:nil
+        ];
+    } @catch (NSException *e){
+        [[NSWorkspace sharedWorkspace] openURL:theURL];
+    }
 }
 
 /**
