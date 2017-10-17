@@ -12,6 +12,7 @@
 #import <Calculator/Calculator.h>
 
 #define DEFAULT_BROWSER @"com.google.Chrome"
+#define KEY_UPDATE_INTERVAL @"updateInterval"
 
 @implementation DashboardController {
 
@@ -22,6 +23,8 @@
     NSDictionary *ticker;
 
     Calculator *calculator;
+
+    int updateInterval;
 }
 
 @synthesize dataRows;
@@ -47,6 +50,16 @@
         NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:column.identifier.lowercaseString ascending:YES selector:@selector(compare:)];
         [column setSortDescriptorPrototype:sortDescriptor];
     }
+
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSNumber *updateIntervalNumber = [defaults objectForKey:KEY_UPDATE_INTERVAL];
+
+    if (updateIntervalNumber == nil) {
+        updateIntervalNumber = [NSNumber numberWithInt:300];
+        [defaults setObject:updateIntervalNumber forKey:KEY_UPDATE_INTERVAL];
+    }
+
+    updateInterval = updateIntervalNumber.intValue;
 
     [self refreshTable];
 }
@@ -106,7 +119,7 @@
                 [self.exchangeTableView reloadData];
             });
 
-            [NSThread sleepForTimeInterval:30];
+            [NSThread sleepForTimeInterval:updateInterval];
             
             [calculator updateRatings];
             [self buyAndSell];
