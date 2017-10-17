@@ -250,9 +250,11 @@
  * @param oldDescriptors NSArray*
  */
 - (void)tableView:(NSTableView *)aTableView sortDescriptorsDidChange:(NSArray *)oldDescriptors {
-    dataRows = [[dataRows sortedArrayUsingDescriptors:aTableView.sortDescriptors] mutableCopy];
+    if (dataRows != nil) {
+        dataRows = [[dataRows sortedArrayUsingDescriptors:aTableView.sortDescriptors] mutableCopy];
 
-    [exchangeTableView reloadData];
+        [exchangeTableView reloadData];
+    }
 }
 
 /**
