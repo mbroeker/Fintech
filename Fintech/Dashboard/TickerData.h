@@ -21,9 +21,11 @@
 @property(strong) NSNumber *high;
 @property(strong) NSNumber *low;
 @property(strong) NSNumber *change;
-@property(strong) NSNumber *basevolume;
-@property(strong) NSNumber *quotevolume;
-@property(strong) NSNumber *investmentrate;
+@property(strong) NSNumber *base;
+@property(strong) NSNumber *quote;
+@property(strong) NSNumber *ir;
+@property(strong) NSNumber *er;
+@property(strong) NSNumber *balance;
 
 - (id)initWithData:(NSArray *)data;
 

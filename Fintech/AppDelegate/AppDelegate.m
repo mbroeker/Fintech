@@ -13,6 +13,10 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     NSUserNotificationCenter *notificationCenter = [NSUserNotificationCenter defaultUserNotificationCenter];
     notificationCenter.delegate = self;
+
+    NSWindow *window = [[NSApplication sharedApplication] mainWindow];
+    [window setFrame:NSMakeRect(0, 0, 1024, 768) display:YES animate:YES];
+    [window center];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {

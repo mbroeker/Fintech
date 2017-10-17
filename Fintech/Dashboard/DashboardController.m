@@ -29,38 +29,6 @@
 @synthesize fintechLabel;
 
 /**
- * Refresh the Table Data
- */
-- (void)refreshTable {
-    dispatch_queue_t queue = dispatch_queue_create("de.4customers.fintech.refreshQueue", nil);
-    dispatch_async(queue, ^{
-        ticker = [calculator tickerDictionary];
-
-        int i = 0;
-        dataRows = [[NSMutableArray alloc] init];
-
-        for (id key in ticker) {
-            dataRows[i++] = [[TickerData alloc] initWithData:
-                @[
-                    key,
-                    ticker[key][DEFAULT_LAST],
-                    ticker[key][DEFAULT_LOW24],
-                    ticker[key][DEFAULT_HIGH24],
-                    ticker[key][DEFAULT_PERCENT],
-                    ticker[key][DEFAULT_BASE_VOLUME],
-                    ticker[key][DEFAULT_QUOTE_VOLUME]
-                ]
-            ];
-        }
-
-        dispatch_async(dispatch_get_main_queue(), ^{
-            dataRows = [[dataRows sortedArrayUsingDescriptors:exchangeTableView.sortDescriptors] mutableCopy];
-            [self.exchangeTableView reloadData];
-        });
-    });
-}
-
-/**
  * Main Entry Point for this View
  */
 - (void)viewDidLoad {
@@ -81,6 +49,69 @@
     }
 
     [self refreshTable];
+}
+
+- (void)buyAndSell {
+    [calculator sellWithProfitInPercent:10];
+    [calculator buyTheWorst];
+}
+
+/**
+ * Refresh the Table Data
+ */
+- (void)refreshTable {
+    dispatch_queue_t queue = dispatch_queue_create("de.4customers.fintech.refreshQueue", nil);
+    dispatch_async(queue, ^{
+
+        while (true) {
+            ticker = [calculator tickerDictionary];
+
+            int i = 0;
+            dataRows = [[NSMutableArray alloc] init];
+
+            for (id key in ticker) {
+
+                // Filter BTC_*
+                if (![[key componentsSeparatedByString:@"_"][0] isEqualToString:ASSET_KEY]) { continue; }
+
+                NSString *masterKey = [NSString stringWithFormat:@"%@_%@", ASSET_KEY, fiatCurrencies[0]];
+                NSString *currentKey = [key componentsSeparatedByString:@"_"][1];
+                NSDictionary *btcCheckpoint = [calculator checkpointForAsset:masterKey];
+                NSDictionary *checkpoint = [calculator checkpointForAsset:key];
+
+                double changes = [checkpoint[CP_PERCENT] doubleValue];
+                if (![key isEqualToString:masterKey]) {
+                    changes -= [btcCheckpoint[CP_PERCENT] doubleValue];
+                }
+
+                NSNumber *cp = @(changes);
+
+                dataRows[i++] = [[TickerData alloc] initWithData:
+                    @[
+                        key,
+                        ticker[key][DEFAULT_LAST],
+                        ticker[key][DEFAULT_LOW24],
+                        ticker[key][DEFAULT_HIGH24],
+                        ticker[key][DEFAULT_PERCENT],
+                        ticker[key][DEFAULT_BASE_VOLUME],
+                        ticker[key][DEFAULT_QUOTE_VOLUME],
+                        cp,
+                        @([calculator balance:currentKey]),
+                    ]
+                ];
+            }
+
+            dispatch_async(dispatch_get_main_queue(), ^{
+                dataRows = [[dataRows sortedArrayUsingDescriptors:exchangeTableView.sortDescriptors] mutableCopy];
+                [self.exchangeTableView reloadData];
+            });
+
+            [NSThread sleepForTimeInterval:30];
+            
+            [calculator updateRatings];
+            [self buyAndSell];
+        }
+    });
 }
 
 /**
@@ -173,19 +204,27 @@
         return [NSString stringWithFormat:@"%.2f", 100.0 * [data.change doubleValue]];
     }
 
-    if ([tableColumn.title isEqualToString:@"baseVolume"]) {
-        if (data.basevolume.doubleValue == 0) { return @"   ---   "; }
-        return [NSString stringWithFormat:@"%.2f", [data.basevolume doubleValue]];
+    if ([tableColumn.title isEqualToString:@"BASE"]) {
+        if (data.base.doubleValue == 0) { return @"   ---   "; }
+        return [NSString stringWithFormat:@"%.2f", [data.base doubleValue]];
     }
 
-    if ([tableColumn.title isEqualToString:@"quoteVolume"]) {
-        if (data.quotevolume.doubleValue == 0) { return @"   ---   "; }
-        return [NSString stringWithFormat:@"%.2f", [data.quotevolume doubleValue]];
+    if ([tableColumn.title isEqualToString:@"QUOTE"]) {
+        if (data.quote.doubleValue == 0) { return @"   ---   "; }
+        return [NSString stringWithFormat:@"%.2f", [data.quote doubleValue]];
     }
 
-    if ([tableColumn.title isEqualToString:@"investmentRate"]) {
-        if (data.investmentrate.doubleValue == 0) { return @"   ---   "; }
-        return [NSString stringWithFormat:@"%.2f", 100.0 * [data.investmentrate doubleValue]];
+    if ([tableColumn.title isEqualToString:@"IR"]) {
+        if (data.ir.doubleValue == 0) { return @"   ---   "; }
+        return [NSString stringWithFormat:@"%.2f", 100.0 * [data.ir doubleValue]];
+    }
+
+    if ([tableColumn.title isEqualToString:@"ER"]) {
+        return [NSString stringWithFormat:@"%.2f", [data.er doubleValue]];
+    }
+
+    if ([tableColumn.title isEqualToString:@"BALANCE"]) {
+        return [NSString stringWithFormat:@"%.8f", [data.balance doubleValue]];
     }
 
     return nil;
@@ -204,12 +243,17 @@
 }
 
 /**
- * Refresh the list
+ * Update the Checkpoints
  *
  * @param sender id
  */
 - (IBAction)refreshButtonAction:(id)sender {
-    [self refreshTable];
+    if ([Helper messageText:@"INFO" info:@"UPDATE ALL CHECKPOINTS?"] == NSAlertFirstButtonReturn) {
+        [calculator updateCheckpointForAsset:DASHBOARD withBTCUpdate:YES];
+        NSLog(@"NEW CHECKPOINTS: %@", [calculator initialRatings]);
+    } else {
+       NSLog(@"CURRENT CHECKPOINTS: %@", [calculator initialRatings]);
+    }
 }
 
 /**
@@ -230,8 +274,6 @@
 
     [dataRows removeAllObjects];
     [exchangeTableView reloadData];
-
-    [self refreshTable];
 }
 
 @end

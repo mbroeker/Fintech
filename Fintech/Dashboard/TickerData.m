@@ -22,14 +22,21 @@
         self.low = @([data[2] doubleValue]);
         self.high = @([data[3] doubleValue]);
         self.change = @([data[4] doubleValue]);
-        self.basevolume = @([data[5] doubleValue]);
-        self.quotevolume = @([data[6] doubleValue]);
+        self.base = @([data[5] doubleValue]);
+        self.quote = @([data[6] doubleValue]);
 
         double ivr = [self.last doubleValue] / ([data[5] doubleValue] / [data[6] doubleValue]) - 1.0;
-        self.investmentrate = @(ivr);
+        self.ir = @(ivr);
 
-        if (isnan(self.investmentrate.doubleValue)) { self.investmentrate = @0; };
-        if (isinf(self.investmentrate.doubleValue)) { self.investmentrate = @0; };
+        self.er = @([data[7] doubleValue]);
+        self.balance = @([data[8] doubleValue]);
+
+        if (isnan(self.ir.doubleValue)) { self.ir = @0; };
+        if (isinf(self.ir.doubleValue)) { self.ir = @0; };
+
+        if (isnan(self.er.doubleValue)) { self.er = @0; };
+        if (isinf(self.er.doubleValue)) { self.er = @0; };
+
     }
 
     return self;
