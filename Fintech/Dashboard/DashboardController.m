@@ -25,11 +25,14 @@
     Calculator *calculator;
 
     int updateInterval;
+
+    BOOL automatedTradingEnabled;
 }
 
 @synthesize dataRows;
 @synthesize exchangeTableView;
 @synthesize fintechLabel;
+@synthesize automatedTradingButton;
 
 /**
  * Main Entry Point for this View
@@ -60,6 +63,7 @@
     }
 
     updateInterval = updateIntervalNumber.intValue;
+    automatedTradingEnabled = false;
 
     [self refreshTable];
 }
@@ -123,7 +127,10 @@
             [NSThread sleepForTimeInterval:updateInterval];
             
             [calculator updateRatings];
-            [self buyAndSell];
+
+            if (automatedTradingEnabled) {
+                [self buyAndSell];
+            }
         }
     });
 }
@@ -267,16 +274,17 @@
 }
 
 /**
- * Update the Checkpoints
+ * Refresh from another Exchange
  *
  * @param sender id
  */
-- (IBAction)refreshButtonAction:(id)sender {
-    if ([Helper messageText:@"INFO" info:@"UPDATE ALL CHECKPOINTS?"] == NSAlertFirstButtonReturn) {
-        [calculator updateCheckpointForAsset:DASHBOARD withBTCUpdate:YES];
-        NSLog(@"NEW CHECKPOINTS: %@", [calculator initialRatings]);
+- (IBAction)automatedTradingButtonAction:(id)sender {
+    automatedTradingEnabled = !automatedTradingEnabled;
+
+    if (automatedTradingEnabled) {
+        automatedTradingButton.image = [NSImage imageNamed:NSImageNameStatusAvailable];
     } else {
-       NSLog(@"CURRENT CHECKPOINTS: %@", [calculator initialRatings]);
+        automatedTradingButton.image = [NSImage imageNamed:NSImageNameStatusUnavailable];
     }
 }
 
@@ -298,6 +306,20 @@
 
     [dataRows removeAllObjects];
     [exchangeTableView reloadData];
+}
+
+/**
+ * Update the Checkpoints
+ *
+ * @param sender id
+ */
+- (IBAction)refreshButtonAction:(id)sender {
+    if ([Helper messageText:@"INFO" info:@"UPDATE ALL CHECKPOINTS?"] == NSAlertFirstButtonReturn) {
+        [calculator updateCheckpointForAsset:DASHBOARD withBTCUpdate:YES];
+        NSLog(@"NEW CHECKPOINTS: %@", [calculator initialRatings]);
+    } else {
+       NSLog(@"CURRENT CHECKPOINTS: %@", [calculator initialRatings]);
+    }
 }
 
 @end

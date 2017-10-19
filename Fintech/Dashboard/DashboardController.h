@@ -23,6 +23,7 @@
 
 @property(strong) IBOutlet NSButton *refreshButton;
 @property (strong) IBOutlet NSButton *exchangeButton;
+@property (strong) IBOutlet NSButton *automatedTradingButton;
 
 /**
  *
@@ -34,7 +35,16 @@
  * @param sender id
  */
 - (IBAction)refreshButtonAction:(id)sender;
+
+/**
+ * @param sender id
+ */
 - (IBAction)exchangeButtonAction:(id)sender;
+
+/**
+ * @param sender id
+ */
+- (IBAction)automatedTradingButtonAction:(id)sender;
 
 /**
  * Refresh the Table Data
