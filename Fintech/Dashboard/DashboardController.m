@@ -82,14 +82,15 @@
             int i = 0;
             dataRows = [[NSMutableArray alloc] init];
 
+            NSString *masterKey = [calculator masterKey];
+            NSDictionary *btcCheckpoint = [calculator checkpointForAsset:masterKey];
+
             for (id key in ticker) {
 
-                // Filter BTC_*
-                if (![[key componentsSeparatedByString:@"_"][0] isEqualToString:ASSET_KEY]) { continue; }
+                // Skip NON-BTC-Markets and USDT-Markets
+                if (![key containsString:ASSET_KEY] || [key containsString:@"USDT"]) { continue; }
 
-                NSString *masterKey = [NSString stringWithFormat:@"%@_%@", ASSET_KEY, fiatCurrencies[0]];
                 NSString *currentKey = [key componentsSeparatedByString:@"_"][1];
-                NSDictionary *btcCheckpoint = [calculator checkpointForAsset:masterKey];
                 NSDictionary *checkpoint = [calculator checkpointForAsset:key];
 
                 double changes = [checkpoint[CP_PERCENT] doubleValue];
