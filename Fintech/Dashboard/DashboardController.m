@@ -144,6 +144,14 @@
     // Get the default Exchange
     NSString *defaultExchange = [calculator defaultExchange];
 
+    double btcBalance = data.balance.doubleValue * [calculator btcPriceForAsset:data.pair];
+    if (btcBalance > 0.00050000) {
+        dispatch_queue_t buyQueue = dispatch_queue_create("de.4customers.fintech.sellQueue", nil);
+        dispatch_async(buyQueue, ^{
+            [calculator autoSell:data.pair amount:0];
+        });
+    }
+
     NSString *url = nil;
     if ([defaultExchange isEqualToString:EXCHANGE_BITTREX]) {
         url = [NSString stringWithFormat:@"https://bittrex.com/Market/Index?MarketName=%@", [data.pair stringByReplacingOccurrencesOfString:@"_" withString:@"-"]];
