@@ -13,6 +13,7 @@
 
 #define DEFAULT_BROWSER @"com.google.Chrome"
 #define KEY_UPDATE_INTERVAL @"updateInterval"
+#define WANTED_PERCENT 5
 
 @implementation DashboardController {
 
@@ -25,7 +26,6 @@
     Calculator *calculator;
 
     int updateInterval;
-
     BOOL automatedTradingEnabled;
 }
 
@@ -69,7 +69,8 @@
 }
 
 - (void)buyAndSell {
-    [calculator sellWithProfitInPercent:10];
+    [calculator sellWithProfitInPercent:WANTED_PERCENT];
+    [calculator sellForTheWorst:WANTED_PERCENT];
     [calculator buyTheWorst];
 }
 
