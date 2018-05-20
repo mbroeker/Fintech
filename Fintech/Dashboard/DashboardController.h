@@ -17,13 +17,13 @@
 @interface DashboardController : NSViewController <NSTableViewDelegate, NSTableViewDataSource>
 
 @property(strong) IBOutlet NSTableView *exchangeTableView;
-@property (strong) IBOutlet NSTextField *fintechLabel;
+@property (weak) IBOutlet NSTextField *fintechLabel;
 
 @property(strong) NSMutableArray *dataRows;
 
-@property(strong) IBOutlet NSButton *refreshButton;
-@property (strong) IBOutlet NSButton *exchangeButton;
-@property (strong) IBOutlet NSButton *automatedTradingButton;
+@property(weak) IBOutlet NSButton *refreshButton;
+@property (weak) IBOutlet NSButton *exchangeButton;
+@property (weak) IBOutlet NSButton *automatedTradingButton;
 
 /**
  *

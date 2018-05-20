@@ -13,7 +13,7 @@
 
 #define DEFAULT_BROWSER @"com.google.Chrome"
 #define KEY_UPDATE_INTERVAL @"updateInterval"
-#define WANTED_PERCENT 5
+#define WANTED_PERCENT 10
 
 @implementation DashboardController {
 
