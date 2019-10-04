@@ -260,6 +260,7 @@
 				TargetAttributes = {
 					B2285C6F1F8EECE100BB95F0 = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = NS52DCTHFQ;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
 								enabled = 1;
@@ -482,6 +483,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = NS52DCTHFQ;
 				"HEADER_SEARCH_PATHS[arch=*]" = "../**";
 				INFOPLIST_FILE = Fintech/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
@@ -499,6 +501,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = NS52DCTHFQ;
 				"HEADER_SEARCH_PATHS[arch=*]" = "../**";
 				INFOPLIST_FILE = Fintech/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
